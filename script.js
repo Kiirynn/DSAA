@@ -39,6 +39,7 @@
 //             temp.next = this.tail;
 //         }
 //         this.size++
+
 //     }
 
 // // insert at a specific index
@@ -185,56 +186,106 @@
 
 // ll.printList()
 
+// LINKED LIST PRACTICE
+
+
 
 
 // STACK
 
- class Stack {
-    constructor(){
-        this.items = []
+//  class Stack {
+//     constructor(){
+//         this.items = []
         
-    }
+//     }
 
-   push(item){
-      this.items.push(item)
-    //   let data = this.storage[this.top] 
-   }
+//    push(item){
+//       this.items.push(item)
+//     //   let data = this.storage[this.top] 
+//    }
 
 
-   pop(){
-       return this.items.pop()
-   }
+//    pop(){
+//        return this.items.pop()
+//    }
 
-   peek(){
-    if(this.items.length === 0){
-        return null
-    } else{
-        return this.items[this.items.length - 1]
-       }
+//    peek(){
+//     if(this.items.length === 0){
+//         return null
+//     } else{
+//         return this.items[this.items.length - 1]
+//        }
       
-   }
+//    }
 
-   getSize(){
-    return this.items.length
- }
+//    getSize(){
+//     return this.items.length 
+//  }
 
-   isEmpty(){
-      return  this.getSize() === 0
-   }
-
-
-}
-
-let stack = new Stack();
+//    isEmpty(){
+//       return  this.getSize() === 0
+//    }
 
 
-stack.push("honda")
-stack.push("toyata")
-stack.push("ferrari")
-stack.push("chevy")
+// }
+
+// let stack = new Stack();
 
 
-console.log(stack)
+// stack.push("honda")
+// stack.push("toyota")
+// stack.push("ferrari")
+// stack.push("chevy")
+
+
+
+// console.log(stack.getSize())
 
 
 // QUEUE
+
+// class Queue{
+//     constructor(){
+//        this.items = []
+//     }
+
+//     //add items 
+//     enqueue(item){
+//        this.items.push(item)
+//     }
+
+//     // remove items
+//     dequeue(){
+//         return this.items.shift()    // shift takes the first item off the array and returns it
+//     }
+
+//     // look at the top item
+//     peek(){
+//         if(this.items.length === 0){    
+//             return null
+//         }
+//         return this.items[0]
+//     }
+
+//   // get the size
+//     getSize(){
+//    return this.items.length
+//     }
+ 
+//    // check if its empty
+//     isEmpty(){
+//          return this.getSize() === 0    }
+
+// }
+
+// let queue = new Queue();
+
+// queue.enqueue("fendi")
+// queue.enqueue("gucci")
+// queue.enqueue("louie")
+
+
+
+// console.log(queue.getSize())
+
+// HASH TABLES
