@@ -190,102 +190,202 @@
 
 
 
+// STACK -----------------------------------------------------
 
-// STACK
 
-//  class Stack {
-//     constructor(){
-//         this.items = []
+ class Stack {
+    constructor(){
+        this.items = []   // (aka this.storage)
+        // this.size =  0
         
-//     }
+    }
 
-//    push(item){
-//       this.items.push(item)
-//     //   let data = this.storage[this.top] 
-//    }
+   push(item){
+      this.items.push(item) 
+    //    or  
+    //    this.items[this.size] = item
+    //    this.size++ 
+  
+   }
 
 
-//    pop(){
-//        return this.items.pop()
-//    }
+   pop(){
+       return this.items.pop()
+    //    or 
+    //    let removed = this.items[this.size]
+    //    delete this.items[this.size]
+    //    this.size--
+    //    return removed
+   }
 
-//    peek(){
-//     if(this.items.length === 0){
-//         return null
-//     } else{
-//         return this.items[this.items.length - 1]
-//        }
+   peek(){
+    if(this.items.length === 0){
+        return null
+    } else{
+        return this.items[this.items.length - 1]
+       }
+    //   or
+    //   return this.items[this.size]
       
-//    }
+   }
 
-//    getSize(){
-//     return this.items.length 
-//  }
+   getSize(){
+    return this.items.length 
+ }
 
-//    isEmpty(){
-//       return  this.getSize() === 0
-//    }
-
-
-// }
-
-// let stack = new Stack();
+   isEmpty(){
+      return  this.getSize() === 0
+   }
 
 
-// stack.push("honda")
-// stack.push("toyota")
-// stack.push("ferrari")
-// stack.push("chevy")
+}
+
+let stack = new Stack();
+
+
+stack.push("honda")
+stack.push("toyota")
+stack.push("ferrari")
+stack.push("chevy")
 
 
 
-// console.log(stack.getSize())
+console.log(stack.getSize())
+
+// STACK PRACTICE
 
 
-// QUEUE
+// QUEUE -----------------------------------------------------
 
-// class Queue{
-//     constructor(){
-//        this.items = []
-//     }
 
-//     //add items 
-//     enqueue(item){
-//        this.items.push(item)
-//     }
+class Queue{
+    constructor(){
+       this.items = []
+    //    or
+    //    this.head = 0
+    //    this.tail = 0
+    //    this.size = 0
+       
+    }
 
-//     // remove items
-//     dequeue(){
-//         return this.items.shift()    // shift takes the first item off the array and returns it
-//     }
+    //add items 
+    enqueue(item){
+       this.items.push(item)
+    //    or 
+    //    this.items[this.tail] = item
+    //    this.tail++
+    }
 
-//     // look at the top item
-//     peek(){
-//         if(this.items.length === 0){    
-//             return null
-//         }
-//         return this.items[0]
-//     }
+    // remove items
+    dequeue(){
+        return this.items.shift()    // shift takes the first item off the array and returns it
+        // or
+        // let removed = this.items[this.head]
+        // delete this,items[this.head]
+        // return removed
+    }
 
-//   // get the size
-//     getSize(){
-//    return this.items.length
-//     }
+    // look at the top item
+    peek(){
+        if(this.items.length === 0){    
+            return null
+        }
+        return this.items[0]
+    }
+
+  // get the size
+    getSize(){
+   return this.items.length
+    }
  
-//    // check if its empty
-//     isEmpty(){
-//          return this.getSize() === 0    }
+   // check if its empty
+    isEmpty(){
+         return this.getSize() === 0    }
 
-// }
+}
 
-// let queue = new Queue();
+let queue = new Queue();
 
-// queue.enqueue("fendi")
-// queue.enqueue("gucci")
-// queue.enqueue("louie")
+queue.enqueue("fendi")
+queue.enqueue("gucci")
+queue.enqueue("louie")
 
 
 
-// console.log(queue.getSize())
+console.log(queue.getSize())
 
-// HASH TABLES
+// QUEUE PRACTICE
+
+
+
+// HASH TABLES -----------------------------------------------------
+
+// hash function 
+
+const hash = (key, size) => {
+    let hashedKey = 0
+    for (let i = 0; i < buckets.length; i++) {
+      hashedKey += key.charCodeAt(i)
+    }
+    return hashedKey % size
+  }
+
+  // declare the table
+  
+  class HashTable {
+    constructor() {
+      this.size = 20
+      this.buckets = Array(this.size) 
+  
+      // populate each bucket with a Map()
+      for (let i = 0; this.buckets.length; i++) {
+        this.buckets[i] = new Map()
+      }
+    }
+
+    // insert new data method
+  
+    insert(key, value) {
+      let idx = hash(key, this.size) 
+      this.buckets[idx].set(key, value)
+    }
+
+    //remove data method
+  
+    remove(key) {
+      let idx = hash(key, this.size)
+      let deleted = this.buckets[idx].get(key)
+      this.buckets[idx].delete(key)
+      return deleted 
+    }
+
+    // search table index method
+  
+    search(key) {
+      let idx = hash(key, this.size)
+      return this.buckets[idx].get(key)
+    }
+  }
+
+  // print
+  
+  const hashTable = new HashTable()
+  
+  hashTable.insert('serena', 'moon')
+  hashTable.insert('amy', 'mercury')
+  hashTable.insert('rei', 'mars')
+  hashTable.insert('lita', 'jupiter')
+  hashTable.insert('mina', 'venus')
+  hashTable.insert('darien', 'tuxedo mask')
+  
+  hashTable.search('rei')
+  hashTable.search('lita')
+  hashTable.search('serena')
+  
+  hashTable.remove('darien')
+  hashTable.remove('mina')
+  
+ // HASH TABLE PRACTICE
+  
+
+ // GRAPH OR BINARY TREE ? -----------------------------------------------------
