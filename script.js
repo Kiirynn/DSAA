@@ -203,8 +203,9 @@
    push(item){
       this.items.push(item) 
     //    or  
-    //    this.items[this.size] = item
     //    this.size++ 
+    //    this.items[this.size] = item
+      
   
    }
 
@@ -225,7 +226,7 @@
         return this.items[this.items.length - 1]
        }
     //   or
-    //   return this.items[this.size]
+    //   return this.items[this.size -1]
       
    }
 
@@ -281,7 +282,8 @@ class Queue{
         return this.items.shift()    // shift takes the first item off the array and returns it
         // or
         // let removed = this.items[this.head]
-        // delete this,items[this.head]
+        // delete this.items[this.head]
+        // this.head++
         // return removed
     }
 
