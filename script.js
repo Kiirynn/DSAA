@@ -139,7 +139,7 @@
 //                     current = current.next
 //                     counter++
 //                 }
-//                 prev.next = current
+//                 prev.next = current.next
                 
 //                 this.size--
 //                 return dataVar
