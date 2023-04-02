@@ -10,24 +10,27 @@ class Stack{
     }
 
     push(item){
-       this.size++
-       this.items[this.size] = item
-      
+        this.size++
+        this.items[this.size] = item
+        
     }
 
     pop(){
-       let removed = this.items[this.size]
-       delete this.items[this.size]
-       this.size--
-       return removed 
+        let removed = this.items[this.size]
+        delete this.items[this.size]
+        this.size--
+        return removed
+        
     }
 
     peek(){
-        return this.items[this.size -1]
+        return this.items[this.size - 1]
+        
     }
 
     getSize(){
         return this.items.length
+        
     }
 
     isEmpty(){
@@ -35,13 +38,7 @@ class Stack{
     }
 }
 
-let stack = new Stack();
-
-stack.push("GOW")
-stack.push("Wukong")
-stack.push("Valorant")
-stack.push("Halo")
-stack.peek()
+const stack = new Stack();
 
 console.log(stack)
 
@@ -55,27 +52,24 @@ class Queue{
     }
 
     enqueue(item){
-        
         this.items[this.tail] = item
         this.tail++
-       
+
+
     }
 
     dequeue(){
         let removed = this.items[this.head]
         delete this.items[this.head]
         this.head++
-        return removed 
+        return removed
     }
+
+
+
 }
 
-let queue = new Queue();
-
-queue.enqueue("A")
-queue.enqueue("B")
-queue.enqueue("C")
-queue.enqueue("D")
-queue.dequeue()
+const queue = new Queue();
 
 console.log(queue)
 
@@ -90,15 +84,16 @@ class linkedList{
     }
 
     insertFirst(data){
-       let newNode = new Node(data);
-       if(this.size === 0){
-            this.head = newNode
-            this.tail = newNode
-       } else{
-           newNode.next = this.head
-           this.head = newNode
-       }
-       this.size++
+        let newNode = new Node(data);
+      if(this.size === 0){
+        this.head = newNode
+        this.tail = newNode
+      } else {
+        newNode.next = this.head
+        this.head = newNode
+        this.size++
+      }
+
     }
 
     insertLast(data){
@@ -110,9 +105,7 @@ class linkedList{
             const temp = this.tail
             this.tail = newNode
             temp.next = this.tail
-            
         }
-
         this.size++
     }
 
@@ -120,7 +113,7 @@ class linkedList{
         let newNode = new Node(data);
         if(index < 0 || index > this.size){
             return null
-        } if(this.size === 0){
+        } if(this.size === 0) {
             return this.insertFirst(data)
         } else if(index === this.size){
             return this.insertLast(data)
@@ -128,7 +121,7 @@ class linkedList{
             let current = this.head
             let prev = null
             let counter = 0
-            while(counter < index){
+            while(counter < index ){
                 prev = current
                 current = current.next
                 counter++
@@ -138,56 +131,56 @@ class linkedList{
             
             this.size++
         }
-        
     }
 
+    
     removeFirst(){
        let dataVar = this.head.data
        if(this.size === 0){
-            return null
-       }if(this.size === 1){
+        return null
+       } if(this.size === 1){
         this.head = null
         this.tail = null
-       } else{
-         this.head = this.head.next
+        }else{
+           this.head.next = this.head
        }
        this.size--
-      return dataVar
+       return dataVar
     }
 
     removeLast(){
         let dataVar = this.tail.data
         if(this.size === 0){
-           return null
-       } if(this.size === 1){
-           this.head = null
-           this.tail = null
+            return null
+        }
+        if(this.size === 1){
+            this.head = null
+            this.tail = null
         } else{
             let current = this.head
-            while(current.next.next != null){
+              while(current.next.next != null){
                 current = current.next
             }
-          current.next = null
-          this.tail = current
-          this.size--
+            current.next = null
+            this.tail = current
 
-       }
-       return dataVar
+            this.size--
+           }
+           return dataVar
     }
+
     removeAt(index){
-        let dataVar = this.head.data
         if(index < 0 || index > this.size){
             return null
-        } if(this.size === 0){
-              return this.removeFirst()
+        } if(this.size === 0) {
+            return this.removeFirst()
         } else if(index === this.size -1){
             return this.removeLast()
-
-        } else { 
+        } else{
             let current = this.head
             let prev = null
             let counter = 0
-            while(counter < index){
+            while(counter < index ){
                 prev = current
                 current = current.next
                 counter++
@@ -195,23 +188,25 @@ class linkedList{
             
             prev.next = current.next
             this.size--
-            return current.data
+          }
+        return current.data
         }
-        // return dataVar
+
+
+        print(){
+            let data = ""
+            let current = this.head
+            while(current != null){
+                data += current.data + " "
+                current = current.next
+            }
+            console.log(data)
+        }
+
+        
     }
 
 
-
-      print(){
-        let data = ""
-        let current = this.head
-        while(current != null){
-            data += current.data + " "
-            current = current.next
-        }
-        console.log(data)
-      }
-}
 
 class Node{
     constructor(data){
@@ -220,20 +215,7 @@ class Node{
     }
 }
 
-
-
 const ll = new linkedList();
-
-ll.insertFirst(10)
-ll.insertLast(20)
-ll.insertLast(30)
-ll.insertLast(40)
-ll.insertLast(50)
-
-ll.insertAt(43, 3)
-ll.removeAt(2)
-
-
 
 ll.print()
 
@@ -241,58 +223,49 @@ ll.print()
 
 // HASH TABLE ----------------------------------------------------------
 
-
-const  hash = (key, size) => {
+const hash = (key, size) => {
     let hashedKey = 0
-      for(let i = 0; i < key.length; i++){
-         hashedKey += key.charCodeAt(i)
-      }
-      return hashedKey % size
- }
+    for(let i = 0; i < key.length; i++){
+        hashedKey += key.charCodeAT(i)
+    }
+    
+    return hashedKey % size
+}
 
-
-class HashTable{
-     constructor(){
+class hashTable{
+    constructor(){
         this.size = 20
         this.buckets = Array(this.size)
-    
+
         for(let i = 0; i < this.buckets.length; i++){
             this.buckets[i] = new Map()
         }
-     }
+        return
+    }
 
-     insert(key, value){
+    insert(key, value){
         let index = hash(key, this.size)
+
         this.buckets[index].set(key, value)
-     }
+    }
 
-     remove(key){
+    remove(key){
         let index = hash(key, this.size)
+
         let deleted = this.buckets[index].get(key)
         this.buckets[index].delete(key)
         return deleted
-     }
 
-     search(key){
+
+    }
+
+    search(key){
         let index = hash(key, this.size)
+        
         return this.buckets[index].get(key)
-     }
-
-    
+    }
 }
 
-
 const hashTable = new HashTable();
-
-// hashTable.insert("Omen", "Controller")
-// hashTable.insert("Jett", "Duelist")
-// hashTable.insert("Cypher", "Sentinel")
-// hashTable.insert("Skye", "Initiator")
-
-hashTable.insert("omen", "controller")
-hashTable.remove("omen")
-
-
-
 
 console.log(hashTable)
