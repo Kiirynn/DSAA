@@ -390,4 +390,234 @@ const hash = (key, size) => {
  // HASH TABLE PRACTICE
   
 
- // GRAPH OR BINARY TREE ? -----------------------------------------------------
+// BINARY TREE  -----------------------------------------------------
+
+class Node{
+    constructor(data){
+        this.data = this.data
+        this.left = null
+        this.right = null
+    }
+}
+
+class BST{
+    constructor(data){
+         this.root = newNode(data)
+         this.count = 1
+    }
+
+
+    size(){
+        return this.count
+    }
+
+    insert(data){
+        this.count++
+        let newNode = newNode(data)
+
+        const searchTree = node => {
+        // if data is < node.data, go left
+            if(data < node.data){
+
+        // if no left child, append new node
+            if(!Node.left){
+
+              }
+        // if left child, look left again
+              else{
+              searchTree(node.left)
+            }
+        }
+
+       // if data > node.data, go right
+         else if(data > node.data){
+              if(!node.right) {
+                node.right = newNode
+              }     
+
+              //if right child, look right again
+              else{
+                searchTree(node.right)
+              }
+            } 
+          }
+
+          searchTree(this.root)
+
+    }
+
+    min(){
+        let current = this.root
+
+     // traverse right until no more children
+        while(current.left){
+            current = current.left
+        }
+       
+        return current.data
+    }
+
+    max(){
+        let currentNode = this.root
+
+        // traverse right until no more children
+           while(current.right){
+               current = current.right
+           }
+          
+           return current.data
+       }
+        
+    
+
+    contains(data){
+        let current = this.root
+        
+        while(current){
+            if(data === current.data){
+                return true
+            } if(data > current.data){
+               current = current.left
+            } else {
+                current = current.right
+            } 
+        }
+        return false
+    }
+
+  // depth first search - branch by branch
+
+
+  // left, root, right  
+  // 2, 3, 12, 15, 28, 36, 39
+  //in order
+  dfsInOrder(){
+     let result = []
+     const traverse = node => {
+        //if left child exists, go left again
+         if(node.left){
+            traverse(node.left)
+         }
+       // capture root node data
+         result.push(node.data)
+      // if right child exists, go right again    
+         if(node.right){
+            traverse(node.right)
+         }
+     }
+     traverse(this.root)
+     return result
+  }
+
+  // pre-order
+  // root, left, right
+  // 15, 3, 2, 12, 36, 28, 39
+  dfsPreOrder(){
+    let result = []
+    const traverse = node => {
+
+        // capture root node data
+        result.push(node.data)
+
+       //if left child exists, go left again
+        if(node.left){
+           traverse(node.left)
+        }
+ 
+      // if right child exists, go right again    
+        if(node.right){
+           traverse(node.right)
+        }
+    }
+    traverse(this.root)
+    return result
+  }
+
+
+  // post-order
+  // left, right, root
+  // 2, 12, 3, 28, 39, 36, 15
+  dfsPostOrder(){
+    let result = []
+    const traverse = node => {
+
+      //if left child exists, go left again
+           if(node.left){
+            traverse(node.left)
+         }
+
+      // if right child exists, go right again    
+        if(node.right){
+            traverse(node.right)
+         }
+
+         // capture root node data
+        result.push(node.data)
+     }
+
+        
+    traverse(this.root)
+    return result
+  }
+
+//   breadth first search - level by level
+//   typically use a queue
+//   15 ,3, 36, 2, 12, 28, 39
+   
+    bfs(){
+        let result = []
+        let queue = []
+
+        queue.push(this.root)
+    
+    while(queue.length){
+        let current = queue.shift()
+
+        result.push(current)
+
+        if(current.left){
+            queue.push(current.left)
+        } 
+        if(current.right){
+            queue.push(current.right)
+
+        }
+
+
+       }    
+    return result
+    }
+}
+
+
+const bst = new BST(15) 
+
+bst.insert(3)
+bst.insert(36)
+bst.insert(2)
+bst.insert(12)
+bst.insert(28)
+bst.insert(39)
+
+bst.size()
+
+bst.max()
+bst.min()
+
+bst.contains(2)
+bst.contains(9)
+
+
+// DFS!!!
+// in-order: 2, 3, 12, 15, 28, 36, 39
+bst.dfsInOrder()
+
+// pre-order: 15, 3, 2, 12, 36, 28, 39
+bst.dfsPreOrder()
+
+// post-order: 2, 12, 3, 28, 39, 36, 15
+bst.dfsPostOrder()
+
+// BFS!!!
+// 15, 3, 36, 2, 12, 28, 39
+bst.bfs()

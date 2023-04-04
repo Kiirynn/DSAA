@@ -40,6 +40,10 @@ class Stack{
 
 const stack = new Stack();
 
+stack.push("poopstain")
+stack.push("new gang")
+stack.push("mr noodle")
+
 console.log(stack)
 
 // QUEUE ----------------------------------------------------------
@@ -71,6 +75,10 @@ class Queue{
 
 const queue = new Queue();
 
+queue.enqueue("A")
+queue.enqueue("B")
+queue.enqueue("C")
+
 console.log(queue)
 
 
@@ -91,9 +99,9 @@ class linkedList{
       } else {
         newNode.next = this.head
         this.head = newNode
-        this.size++
+        
       }
-
+this.size++
     }
 
     insertLast(data){
@@ -217,6 +225,11 @@ class Node{
 
 const ll = new linkedList();
 
+ll.insertFirst(10)
+ll.insertFirst(20)
+ll.insertFirst(30)
+ll.insertFirst(40)
+
 ll.print()
 
 
@@ -226,13 +239,13 @@ ll.print()
 const hash = (key, size) => {
     let hashedKey = 0
     for(let i = 0; i < key.length; i++){
-        hashedKey += key.charCodeAT(i)
+        hashedKey += key.charCodeAt(i)
     }
     
     return hashedKey % size
 }
 
-class hashTable{
+class HashTable{
     constructor(){
         this.size = 20
         this.buckets = Array(this.size)
@@ -266,6 +279,10 @@ class hashTable{
     }
 }
 
-const hashTable = new HashTable();
+const hT = new HashTable();
 
-console.log(hashTable)
+hT.insert("omen", "controller")
+hT.insert("jett", "duelist")
+hT.insert("cypher", "sentinel")
+
+console.log(hT)
