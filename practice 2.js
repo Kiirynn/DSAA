@@ -101,7 +101,7 @@ class linkedList{
         this.head = newNode
         
       }
-this.size++
+     this.size++
     }
 
     insertLast(data){
@@ -286,3 +286,175 @@ hT.insert("jett", "duelist")
 hT.insert("cypher", "sentinel")
 
 console.log(hT)
+
+// BINARY TREE ----------------------------------------------------------
+
+class Node{
+    constructor(data){
+        this.left = null
+        this.right = null
+        this.data = data
+
+    }
+}
+
+class BST{
+    constructor(data){
+        this.root = newNode(data)
+        this.size = 1
+    }
+
+
+    size(){
+        return this.size
+    }
+
+    insert(data){
+        this.size++
+        let newNode = new Node(data)
+
+        const searchTree = node => {
+            if(data < newNode.data){
+               if(!node.left){
+                node.left = newNode 
+               } else {
+                searchTree(node.left)
+               }
+            } 
+            else if(data > newNode.data){
+                    if(!node.right){
+                     node.right = newNode 
+                    }
+            } else{
+                searchTree(node.right)
+            }
+        }
+    
+        searchTree(this.root)
+    }
+
+
+
+    min(){
+       let current = this.root
+           while(current.left){
+            current = current.left
+           }
+
+           return current.data
+          
+       }
+  
+
+
+    max(){
+        let current = this.root
+        while(current.right){
+         current = current.right
+        }
+
+        return current.data
+    }
+
+    contains(){
+        let current = this.root
+         while(current){
+            if(data === current.data) return true;
+            if(data < current.data) current = current.left;
+            else { current = current.right}
+         }
+      return  false
+        
+    }
+
+
+    // Depth First Search
+
+
+    //order
+    // left, root, right
+
+    bfsInOrder(){
+        let result = []
+        let traverse = node => {
+            if(current.left){
+                current = current.left
+            } 
+            result.push(node.data)
+
+            if(current.right){
+                current = current.right
+            } 
+        }
+        traverse(this.root)
+        return result
+    }
+
+  // pre
+  // root, left, right
+
+    bfsPreOrder(){
+        let result = []
+        let traverse = node => {
+
+            result.push(node.data)
+            
+            if(current.left){
+                current = current.left
+            } 
+         
+            if(current.right){
+                current = current.right
+            } 
+        }
+        traverse(this.root)
+        return result
+    }
+
+    //post
+    // left, right, root
+
+    bfsPostOrder(){
+        let result = []
+        let traverse = node => {
+            if(current.left){
+                current = current.left
+            } 
+
+            if(current.right){
+                current = current.right
+            } 
+
+            result.push(node.data)
+          
+        }
+        traverse(this.root)
+        return result
+    }
+
+    // BFS
+
+    bfs(){
+        let result = []
+        let queue = []
+
+        while(queue.length){
+            let current = queue.shift()
+            result.push(current.data)
+
+            if(current.left){
+                queue.push(current.left)
+            }
+            if(current.right){
+                queue.push(current.right)
+            }
+        }
+        return result
+
+    }
+
+}
+
+const bst = new BST()
+
+console.log(bst)
