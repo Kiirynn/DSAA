@@ -120,7 +120,7 @@ class linkedList{
         let newNode = new Node(data);
         if(index < 0 || index > this.size){
             return null
-        } if(this.size === 0){
+        } if(index === 0){
             return this.insertFirst(data)
         } else if(index === this.size){
             return this.insertLast(data)
@@ -178,7 +178,7 @@ class linkedList{
         let dataVar = this.head.data
         if(index < 0 || index > this.size){
             return null
-        } if(this.size === 0){
+        } if(index === 0){
               return this.removeFirst()
         } else if(index === this.size -1){
             return this.removeLast()
