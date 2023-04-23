@@ -390,7 +390,7 @@
 //  // HASH TABLE PRACTICE
   
 
-// BINARY TREE  -----------------------------------------------------
+// BINARY TREE recursive -----------------------------------------------------
 
 class Node{
     constructor(data){
@@ -589,6 +589,39 @@ class BST{
        }    
     return result
     }
+
+
+    // or for leetcode levelorder (bf)
+
+   levelOrder = function(root) {
+        if (!root) {
+              return [];
+          }
+         
+          let queue = [];
+          let result = [];
+      
+          queue.push(root);
+      
+          while(queue.length) {
+              let levelSize = queue.length;
+              let currentLevel = [];
+      
+              for (let i = 0; i < levelSize; i++) {
+                  let current = queue.shift();
+                  currentLevel.push(current.val);
+      
+                  if(current.left) {
+                     queue.push(current.left);
+                  }
+                  if(current.right) {
+                     queue.push(current.right);
+                  } 
+              }
+              result.push(currentLevel);
+          }
+          return result;
+      };
 }
 
 

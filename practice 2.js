@@ -269,7 +269,7 @@ let ht = new hashTable()
 
 console.log()
 
-// BINARY TREE ----------------------------------------------------------
+// BINARY TREE recursive ----------------------------------------------------------
 
 class Node{
     constructor(data){
