@@ -1,231 +1,231 @@
 
-// // LINKED LIST
+// // // LINKED LIST
 
-// // declare list
+// // // declare list
 
-    class linkedList{
-        constructor(){
-        this.head = null
-        this.tail = null
-        this.size = 0
-        }
+//     class linkedList{
+//         constructor(){
+//         this.head = null
+//         this.tail = null
+//         this.size = 0
+//         }
 
 
-// two pointers to detect cycle
+// // two pointers to detect cycle
 
-detectCycle() {
-    let slow = this;
-    let fast = this;
+// detectCycle() {
+//     let slow = this;
+//     let fast = this;
 
-    while (fast && fast.next) {
-      slow = slow.next;
-      fast = fast.next.next;
-      if (slow === fast) {
-        return true;
-      }
-    }
+//     while (fast && fast.next) {
+//       slow = slow.next;
+//       fast = fast.next.next;
+//       if (slow === fast) {
+//         return true;
+//       }
+//     }
 
-    return false;
-  }        
+//     return false;
+//   }        
 
-// prepend
+// // prepend
 
-    insertFirst(data){
-        let newNode = new Node(data)
-        if(this.size === 0){
-            this.head = newNode
-            this.tail = newNode
-        } else{
-            newNode.next = this.head
-            this.head = newNode
-        }
-        this.size++
+//     insertFirst(data){
+//         let newNode = new Node(data)
+//         if(this.size === 0){
+//             this.head = newNode
+//             this.tail = newNode
+//         } else{
+//             newNode.next = this.head
+//             this.head = newNode
+//         }
+//         this.size++
 
-    }
+//     }
 
-// append
+// // append
 
-    insertLast(data){
-        let newNode = new Node(data)
-        if(this.size === 0 || this.head === null || this.tail === null ){    // you can use any of these
-           this.head = newNode
-           this.tail = newNode
-        } 
-        if(this.size > 0){
-            const temp = this.tail
-            this.tail = newNode
-            temp.next = this.tail;
-        }
-        this.size++
+//     insertLast(data){
+//         let newNode = new Node(data)
+//         if(this.size === 0 || this.head === null || this.tail === null ){    // you can use any of these
+//            this.head = newNode
+//            this.tail = newNode
+//         } 
+//         if(this.size > 0){
+//             const temp = this.tail
+//             this.tail = newNode
+//             temp.next = this.tail;
+//         }
+//         this.size++
 
-    }
+//     }
 
-// insert at a specific index
+// // insert at a specific index
 
-    insertAt(data, index){
+//     insertAt(data, index){
       
-      if(index < 0 || index > this.size){
-        return 
-      } 
-      if(this.size === 0){
-          return this.insertFirst(data)
-      } 
-      else if(index === this.size){
-        return this.insertLast(data)
-      } else{
-        let newNode = new Node(data)
-          let current = this.head
-          let prev = null
-          let counter = 0
-          while(counter < index){
-               prev = current
-               current = current.next
-               counter++
-          }
-          newNode.next = current
-          prev.next = newNode
-          this.size++
-      }
-    }
+//       if(index < 0 || index > this.size){
+//         return 
+//       } 
+//       if(this.size === 0){
+//           return this.insertFirst(data)
+//       } 
+//       else if(index === this.size){
+//         return this.insertLast(data)
+//       } else{
+//         let newNode = new Node(data)
+//           let current = this.head
+//           let prev = null
+//           let counter = 0
+//           while(counter < index){
+//                prev = current
+//                current = current.next
+//                counter++
+//           }
+//           newNode.next = current
+//           prev.next = newNode
+//           this.size++
+//       }
+//     }
 
-// reverse the list 
-reverse(){
-    let prev = null;
-    let current = this.head;
+// // reverse the list 
+// reverse(){
+//     let prev = null;
+//     let current = this.head;
 
-    while (current !== null) {
-      let next = current.next;
-      current.next = prev;
-      prev = current;
-      current = next;
-    }
+//     while (current !== null) {
+//       let next = current.next;
+//       current.next = prev;
+//       prev = current;
+//       current = next;
+//     }
 
-    this.tail = this.head;
-    this.head = prev;
-  }
+//     this.tail = this.head;
+//     this.head = prev;
+//   }
 
 
-// remove first node
-    removeFirst(data){
-        let dataVar = this.head.data   // this just saves the header data in a variable
-        if(this.size === 0){
-           return null
-        }
-        if(this.size === 1){
-            this.head = null
-            this.tail = null
-        } 
-        else{
-            this.head = this.head.next
-            this.size--
-            return dataVar
+// // remove first node
+//     removeFirst(data){
+//         let dataVar = this.head.data   // this just saves the header data in a variable
+//         if(this.size === 0){
+//            return null
+//         }
+//         if(this.size === 1){
+//             this.head = null
+//             this.tail = null
+//         } 
+//         else{
+//             this.head = this.head.next
+//             this.size--
+//             return dataVar
 
-        }
+//         }
         
       
        
-    }
+//     }
 
-    // remove last node
+//     // remove last node
 
 
-    removeLast(){
+//     removeLast(){
         
-        let dataVar = this.tail.data
-        if(this.size === 0 || this.head === null || this.tail === null ){   // you can use any of these conditionals
-            return null
-         } 
-         if(this.size === 1){
-           this.head = null
-           this.tail = null
-         } else {
-            let current = this.head
-            while(current.next.next != null){      // this makes it so you can access the second last node
-                current = current.next
+//         let dataVar = this.tail.data
+//         if(this.size === 0 || this.head === null || this.tail === null ){   // you can use any of these conditionals
+//             return null
+//          } 
+//          if(this.size === 1){
+//            this.head = null
+//            this.tail = null
+//          } else {
+//             let current = this.head
+//             while(current.next.next != null){      // this makes it so you can access the second last node
+//                 current = current.next
 
-            } 
-            current.next = null      // see notes
-            this.tail = current
-        }
-         this.size--
-         return dataVar
-    }
+//             } 
+//             current.next = null      // see notes
+//             this.tail = current
+//         }
+//          this.size--
+//          return dataVar
+//     }
 
 
-// remove at a specific index
+// // remove at a specific index
 
-    removeAt(index){
-        let dataVar = this.head.data
-        if(index < 0 || index > this.size){
-                return null
-            } 
-            if(this.size === 0){
-                return this.removeFirst()
-            } 
-            else if(index === this.size -1){
-                return this.removeLast()
-            }
-            else{
-                let current = this.head
-                let counter = 0
-                let prev = null
-              while(counter < index){
-                    prev = current
-                    current = current.next
-                    counter++
-                }
-                prev.next = current.next
+//     removeAt(index){
+//         let dataVar = this.head.data
+//         if(index < 0 || index > this.size){
+//                 return null
+//             } 
+//             if(this.size === 0){
+//                 return this.removeFirst()
+//             } 
+//             else if(index === this.size -1){
+//                 return this.removeLast()
+//             }
+//             else{
+//                 let current = this.head
+//                 let counter = 0
+//                 let prev = null
+//               while(counter < index){
+//                     prev = current
+//                     current = current.next
+//                     counter++
+//                 }
+//                 prev.next = current.next
                 
-                this.size--
-                return dataVar
-             } 
-        }
+//                 this.size--
+//                 return dataVar
+//              } 
+//         }
 
 
 
-    // print list 
+//     // print list 
 
-     printList(){
-        let data = ""
-        let current = this.head
-        while(current != null){ 
-            data = data + current.data + " "
-            current = current.next
-    }
-         console.log(data)
-    }
+//      printList(){
+//         let data = ""
+//         let current = this.head
+//         while(current != null){ 
+//             data = data + current.data + " "
+//             current = current.next
+//     }
+//          console.log(data)
+//     }
  
 
 
-}
+// }
 
-// construct node
+// // construct node
 
-class Node{
-    constructor(data){
-       this.data = data
-       this.next = null
+// class Node{
+//     constructor(data){
+//        this.data = data
+//        this.next = null
      
-    }
-}
+//     }
+// }
 
-const ll = new linkedList();
+// const ll = new linkedList();
 
-ll.insertFirst(10)
-ll.insertLast(20)
-ll.insertLast(30)
-ll.insertAt(50, 2)
-ll.insertLast(68)
+// ll.insertFirst(10)
+// ll.insertLast(20)
+// ll.insertLast(30)
+// ll.insertAt(50, 2)
+// ll.insertLast(68)
 
-ll.removeLast()
+// ll.removeLast()
 
-ll.printList()
+// ll.printList()
 
-// LINKED LIST PRACTICE
+// // LINKED LIST PRACTICE
 
 
 
-// STACK -----------------------------------------------------
+// // STACK -----------------------------------------------------
 
 
 //  class Stack {
@@ -288,10 +288,10 @@ ll.printList()
 
 // console.log(stack.getSize())
 
-// // STACK PRACTICE
+// // // STACK PRACTICE
 
 
-// // QUEUE -----------------------------------------------------
+// // // QUEUE -----------------------------------------------------
 
 
 // class Queue{
@@ -351,13 +351,13 @@ ll.printList()
 
 // console.log(queue.getSize())
 
-// // QUEUE PRACTICE
+// // // QUEUE PRACTICE
 
 
 
-// // HASH TABLES -----------------------------------------------------
+// // // HASH TABLES -----------------------------------------------------
 
-// // hash function 
+// // // hash function 
 
 // const hash = (key, size) => {
 //     let hashedKey = 0
@@ -422,371 +422,396 @@ ll.printList()
 //   hashTable.remove('darien')
 //   hashTable.remove('mina')
   
-//  // HASH TABLE PRACTICE
+// //  // HASH TABLE PRACTICE
   
 
-// BINARY TREE recursive -----------------------------------------------------
+// // BINARY TREE recursive -----------------------------------------------------
 
-class Node{
-    constructor(data){
-        this.data = data
-        this.left = null
-        this.right = null
-    }
-}
+// class Node{
+//     constructor(data){
+//         this.data = data
+//         this.left = null
+//         this.right = null
+//     }
+// }
 
-class BST{
-    constructor(data){
-         this.root = new Node(data)
-         this.size = 1
-    }
-
-
-    size(){
-        return this.size
-    }
+// class BST{
+//     constructor(data){
+//          this.root = new Node(data)
+//          this.size = 1
+//     }
 
 
-    insert(data){
-        this.size++
-        let newNode = new Node(data)
-
-        const searchTree = node => {
-        // if data is < node.data, go left
-            if(data < node.data){
-
-        // if no left child, append new node
-            if(!node.left){
-                 node.left = newNode
-              }
-        // if left child, look left again
-              else{
-              searchTree(node.left)
-            }
-        }
-
-       // if data > node.data, go right
-         else if(data > node.data){
-              if(!node.right) {
-                node.right = newNode
-              }     
-
-              //if right child, look right again
-              else{
-                searchTree(node.right)
-              }
-            } 
-          }
-
-          searchTree(this.root)
-    }
+//     size(){
+//         return this.size
+//     }
 
 
+//     insert(data){
+//         this.size++
+//         let newNode = new Node(data)
 
-    min(){
-        let current = this.root
+//         const searchTree = node => {
+//         // if data is < node.data, go left
+//             if(data < node.data){
 
-     // traverse right until no more children
-        while(current.left){
-            current = current.left
-        }
+//         // if no left child, append new node
+//             if(!node.left){
+//                  node.left = newNode
+//               }
+//         // if left child, look left again
+//               else{
+//               searchTree(node.left)
+//             }
+//         }
+
+//        // if data > node.data, go right
+//          else if(data > node.data){
+//               if(!node.right) {
+//                 node.right = newNode
+//               }     
+
+//               //if right child, look right again
+//               else{
+//                 searchTree(node.right)
+//               }
+//             } 
+//           }
+
+//           searchTree(this.root)
+//     }
+
+
+
+//     min(){
+//         let current = this.root
+
+//      // traverse right until no more children
+//         while(current.left){
+//             current = current.left
+//         }
        
-        return current.data
-    }
+//         return current.data
+//     }
 
-    max(){
-        let current = this.root
+//     max(){
+//         let current = this.root
 
-        // traverse right until no more children
-           while(current.right){
-               current = current.right
-           }
+//         // traverse right until no more children
+//            while(current.right){
+//                current = current.right
+//            }
           
-           return current.data
-       }
+//            return current.data
+//        }
         
     
 
-    contains(data){
-        let current = this.root
+//     contains(data){
+//         let current = this.root
         
-        while(current){
-            if(data === current.data){
-                return true
-            } if(data < current.data){
-               current = current.left
-            } else {
-                current = current.right
-            } 
-        }
-        return false
-    }
+//         while(current){
+//             if(data === current.data){
+//                 return true
+//             } if(data < current.data){
+//                current = current.left
+//             } else {
+//                 current = current.right
+//             } 
+//         }
+//         return false
+//     }
 
-  // depth first search - branch by branch
+//   // depth first search - branch by branch
 
 
-  // left, root, right  
-  // 2, 3, 12, 15, 28, 36, 39
-  //in order
-  dfsInOrder(){
-     let result = []
-     const traverse = node => {
-        //if left child exists, go left again
-         if(node.left){
-            traverse(node.left)
-         }
-       // capture root node data
-         result.push(node.data)
-      // if right child exists, go right again    
-         if(node.right){
-            traverse(node.right)
-         }
-     }
-     traverse(this.root)
-     return result
-  }
+//   // left, root, right  
+//   // 2, 3, 12, 15, 28, 36, 39
+//   //in order
+//   dfsInOrder(){
+//      let result = []
+//      const traverse = node => {
+//         //if left child exists, go left again
+//          if(node.left){
+//             traverse(node.left)
+//          }
+//        // capture root node data
+//          result.push(node.data)
+//       // if right child exists, go right again    
+//          if(node.right){
+//             traverse(node.right)
+//          }
+//      }
+//      traverse(this.root)
+//      return result
+//   }
 
-  // pre-order
-  // root, left, right
-  // 15, 3, 2, 12, 36, 28, 39
-  dfsPreOrder(){
-    let result = []
-    const traverse = node => {
+//   // pre-order
+//   // root, left, right
+//   // 15, 3, 2, 12, 36, 28, 39
+//   dfsPreOrder(){
+//     let result = []
+//     const traverse = node => {
 
-        // capture root node data
-        result.push(node.data)
+//         // capture root node data
+//         result.push(node.data)
 
-       //if left child exists, go left again
-        if(node.left){
-           traverse(node.left)
-        }
+//        //if left child exists, go left again
+//         if(node.left){
+//            traverse(node.left)
+//         }
  
-      // if right child exists, go right again    
-        if(node.right){
-           traverse(node.right)
-        }
-    }
-    traverse(this.root)
-    return result
-  }
+//       // if right child exists, go right again    
+//         if(node.right){
+//            traverse(node.right)
+//         }
+//     }
+//     traverse(this.root)
+//     return result
+//   }
 
 
-  // post-order
-  // left, right, root
-  // 2, 12, 3, 28, 39, 36, 15
-  dfsPostOrder(){
-    let result = []
-    const traverse = node => {
+//   // post-order
+//   // left, right, root
+//   // 2, 12, 3, 28, 39, 36, 15
+//   dfsPostOrder(){
+//     let result = []
+//     const traverse = node => {
 
-      //if left child exists, go left again
-           if(node.left){
-            traverse(node.left)
-         }
+//       //if left child exists, go left again
+//            if(node.left){
+//             traverse(node.left)
+//          }
 
-      // if right child exists, go right again    
-        if(node.right){
-            traverse(node.right)
-         }
+//       // if right child exists, go right again    
+//         if(node.right){
+//             traverse(node.right)
+//          }
 
-         // capture root node data
-        result.push(node.data)
-     }
+//          // capture root node data
+//         result.push(node.data)
+//      }
 
         
-    traverse(this.root)
-    return result
-  }
+//     traverse(this.root)
+//     return result
+//   }
 
-//   breadth first search - level by level
-//   typically use a queue
-//   15 ,3, 36, 2, 12, 28, 39
+// //   breadth first search - level by level
+// //   typically use a queue
+// //   15 ,3, 36, 2, 12, 28, 39
    
-    bfs(){
-        let result = []
-        let queue = []
+//     bfs(){
+//         let result = []
+//         let queue = []
 
-        queue.push(this.root)
+//         queue.push(this.root)
     
-    while(queue.length){
-        let current = queue.shift()
+//     while(queue.length){
+//         let current = queue.shift()
 
-        result.push(current)
+//         result.push(current)
 
-        if(current.left){
-            queue.push(current.left)
-        } 
-        if(current.right){
-            queue.push(current.right)
+//         if(current.left){
+//             queue.push(current.left)
+//         } 
+//         if(current.right){
+//             queue.push(current.right)
 
-        }
-
-
-       }    
-    return result
-    }
+//         }
 
 
-    // or for leetcode levelorder (bf)
+//        }    
+//     return result
+//     }
 
-   levelOrder = function(root) {
-        if (!root) {
-              return [];
-          }
+
+//     // or for leetcode levelorder (bf)
+
+//    levelOrder = function(root) {
+//         if (!root) {
+//               return [];
+//           }
          
-          let queue = [];
-          let result = [];
+//           let queue = [];
+//           let result = [];
       
-          queue.push(root);
+//           queue.push(root);
       
-          while(queue.length) {
-              let levelSize = queue.length;
-              let currentLevel = [];
+//           while(queue.length) {
+//               let levelSize = queue.length;
+//               let currentLevel = [];
       
-              for (let i = 0; i < levelSize; i++) {
-                  let current = queue.shift();
-                  currentLevel.push(current.val);
+//               for (let i = 0; i < levelSize; i++) {
+//                   let current = queue.shift();
+//                   currentLevel.push(current.val);
       
-                  if(current.left) {
-                     queue.push(current.left);
-                  }
-                  if(current.right) {
-                     queue.push(current.right);
-                  } 
-              }
-              result.push(currentLevel);
-          }
-          return result;
-      };
+//                   if(current.left) {
+//                      queue.push(current.left);
+//                   }
+//                   if(current.right) {
+//                      queue.push(current.right);
+//                   } 
+//               }
+//               result.push(currentLevel);
+//           }
+//           return result;
+//       };
+// }
+
+
+// const bst = new BST(15) 
+
+// bst.insert(3)
+// bst.insert(36)
+// bst.insert(2)
+// bst.insert(12)
+// bst.insert(28)
+// bst.insert(39)
+
+// // bst.size()
+// // bst.max()
+// // bst.min()
+
+// // bst.contains(2)
+// // bst.contains(9)
+
+
+// // // // DFS!!!
+// // // // in-order: 2, 3, 12, 15, 28, 36, 39
+// // bst.dfsInOrder()
+
+// // // // pre-order: 15, 3, 2, 12, 36, 28, 39
+// // bst.dfsPreOrder()
+
+// // // // post-order: 2, 12, 3, 28, 39, 36, 15
+// // bst.dfsPostOrder()
+
+// // // // BFS!!!
+// // // // 15, 3, 36, 2, 12, 28, 39
+// // bst.bfs()
+
+
+// console.log(bst.bfs())
+
+
+// // BINARY HEAP iterative ----------------------------------------------------------
+
+// class MinHeap{
+//     constructor(){
+//         this.storage = [];
+//         this.size = 0;
+//     }
+
+//     getLeftChildIndex(index){
+//         return 2 * index + 1;
+//     }
+
+//     getRightChildIndex(index){
+//         return 2 * index + 2;
+//     }
+//     // check if this rounds down
+//     getParentIndex(index){
+//         return Math.floor((index - 1) / 2)
+//     }
+
+//     hasLeftChild(index){
+//         return this.getLeftChildIndex(index) < this.size;
+//     }
+
+//     hasRightChild(index){
+//         return this.getRightChildIndex(index) < this.size;
+//     }
+
+//     hasParent(index){
+//         return this.getParentIndex(index) >= 0;
+//     }
+
+//     leftChild(index){
+//         return this.storage[this.getLeftChildIndex(index)];
+//     }
+
+//     rightChild(index){
+//         return this.storage[this.getRightChildIndex(index)];
+//     }
+
+//     parent(index){
+//         return this.storage[this.getParentIndex(index)];
+//     }
+
+//     isFull(){
+//         return this.size == this.capacity;
+//     }
+    
+//     swap(index1,index2){
+//         let temp = this.storage[index1];
+//         this.storage[index1] = this.storage[index2];
+//         this.storage[index2] = temp;
+//     }
+
+
+//     // --------------- effective interative methods
+
+//     insert(data){
+//         this.storage[this.size] = data;
+//         this.size += 1;
+//         this.heapifyUp();
+//     }
+    
+//     heapifyUp(){
+//          let index = this.size - 1;
+//          while(this.hasParent(index) && this.parent(index) > this.storage[index]){
+//             this.swap(this.getParentIndex(index),index);
+//             index = this.getParentIndex(index);
+//          }
+//     }
+    
+//     removeMin(){
+//         if(this.size == 0)
+//             throw new Error("Empty Heap");
+//         let data = this.storage[0];
+//         this.storage[0] = this.storage[this.size - 1];
+//         this.size -= 1;
+//         this.heapifyDown();
+//         return data;
+//     }   
+
+//     heapifyDown(){
+//         let index = 0;
+//         while(this.hasLeftChild(index)){
+//             let smallerChildIndex = this.getLeftChildIndex(index);
+//             if(this.hasRightChild(index) && this.rightChild(index) < this.leftChild(index))
+//                 smallerChildIndex = this.getRightChildIndex(index);
+//             if(this.storage[index] < this.storage[smallerChildIndex])
+//                 break;
+//             else
+//                 this.swap(index,smallerChildIndex);
+//             index = smallerChildIndex;
+//         }
+//     }     
+// }
+
+// SLIDING WINDOW EXAMPLE
+
+const slidingWindow = (nums, k) => {
+
+    let windowSum = 0
+    let maxSum = 0
+
+    for(let i = 0; i < k; i++){
+        windowSum += nums[i]
+    }
+
+    for(let i = k; i < nums.length; i++){
+        windowSum += nums[i] - nums[i - (k - 1)]
+        maxSum = Math.max(windowSum, maxSum)
+    }
+
+    return maxSum
+
 }
 
+const nums1 = [2,5,6,9,8,3,2,6,7,8,4,4,7]
 
-const bst = new BST(15) 
+console.log(slidingWindow(nums1, 3))
 
-bst.insert(3)
-bst.insert(36)
-bst.insert(2)
-bst.insert(12)
-bst.insert(28)
-bst.insert(39)
-
-// bst.size()
-// bst.max()
-// bst.min()
-
-// bst.contains(2)
-// bst.contains(9)
-
-
-// // // DFS!!!
-// // // in-order: 2, 3, 12, 15, 28, 36, 39
-// bst.dfsInOrder()
-
-// // // pre-order: 15, 3, 2, 12, 36, 28, 39
-// bst.dfsPreOrder()
-
-// // // post-order: 2, 12, 3, 28, 39, 36, 15
-// bst.dfsPostOrder()
-
-// // // BFS!!!
-// // // 15, 3, 36, 2, 12, 28, 39
-// bst.bfs()
-
-
-console.log(bst.bfs())
-
-
-// BINARY HEAP iterative ----------------------------------------------------------
-
-class MinHeap{
-    constructor(){
-        this.storage = [];
-        this.size = 0;
-    }
-
-    getLeftChildIndex(index){
-        return 2 * index + 1;
-    }
-
-    getRightChildIndex(index){
-        return 2 * index + 2;
-    }
-    // check if this rounds down
-    getParentIndex(index){
-        return Math.floor((index - 1) / 2)
-    }
-
-    hasLeftChild(index){
-        return this.getLeftChildIndex(index) < this.size;
-    }
-
-    hasRightChild(index){
-        return this.getRightChildIndex(index) < this.size;
-    }
-
-    hasParent(index){
-        return this.getParentIndex(index) >= 0;
-    }
-
-    leftChild(index){
-        return this.storage[this.getLeftChildIndex(index)];
-    }
-
-    rightChild(index){
-        return this.storage[this.getRightChildIndex(index)];
-    }
-
-    parent(index){
-        return this.storage[this.getParentIndex(index)];
-    }
-
-    isFull(){
-        return this.size == this.capacity;
-    }
-    
-    swap(index1,index2){
-        let temp = this.storage[index1];
-        this.storage[index1] = this.storage[index2];
-        this.storage[index2] = temp;
-    }
-
-
-    // --------------- effective interative methods
-
-    insert(data){
-        this.storage[this.size] = data;
-        this.size += 1;
-        this.heapifyUp();
-    }
-    
-    heapifyUp(){
-         let index = this.size - 1;
-         while(this.hasParent(index) && this.parent(index) > this.storage[index]){
-            this.swap(this.getParentIndex(index),index);
-            index = this.getParentIndex(index);
-         }
-    }
-    
-    removeMin(){
-        if(this.size == 0)
-            throw new Error("Empty Heap");
-        let data = this.storage[0];
-        this.storage[0] = this.storage[this.size - 1];
-        this.size -= 1;
-        this.heapifyDown();
-        return data;
-    }   
-
-    heapifyDown(){
-        let index = 0;
-        while(this.hasLeftChild(index)){
-            let smallerChildIndex = this.getLeftChildIndex(index);
-            if(this.hasRightChild(index) && this.rightChild(index) < this.leftChild(index))
-                smallerChildIndex = this.getRightChildIndex(index);
-            if(this.storage[index] < this.storage[smallerChildIndex])
-                break;
-            else
-                this.swap(index,smallerChildIndex);
-            index = smallerChildIndex;
-        }
-    }     
-}
