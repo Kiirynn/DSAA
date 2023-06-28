@@ -365,7 +365,7 @@ class BST{
     }
 
      // pre search
-    // left, right, root
+    // root, left, right
 
     dfsPreOrder(){
         let result = []
@@ -387,7 +387,7 @@ class BST{
     }
 
      // post search
-    // root, left, right
+    // left, right, root
 
     dfsPostOrder(){
         let result = []
@@ -410,7 +410,7 @@ class BST{
         return result
     }
 
-    //bredth first search
+    //bredth first search interative 
 
     bfs(){
       let result = []

@@ -598,7 +598,7 @@
 //   }
 
 // //   breadth first search - level by level
-// //   typically use a queue
+// //   typically use a queue and is an iterative method
 // //   15 ,3, 36, 2, 12, 28, 39
    
 //     bfs(){
@@ -793,25 +793,49 @@
 
 // SLIDING WINDOW EXAMPLE
 
-const slidingWindow = (nums, k) => {
+// const slidingWindow = (nums, k) => {
 
-    let windowSum = 0
-    let maxSum = 0
+//     let windowSum = 0
+//     let maxSum = 0
 
-    for(let i = 0; i < k; i++){
-        windowSum += nums[i]
-    }
+//     for(let i = 0; i < k; i++){
+//         windowSum += nums[i]
+//     }
 
-    for(let i = k; i < nums.length; i++){
-        windowSum += nums[i] - nums[i - (k - 1)]
-        maxSum = Math.max(windowSum, maxSum)
-    }
+//     for(let i = k; i < nums.length; i++){
+//         windowSum += nums[i] - nums[i - (k - 1)]
+//         maxSum = Math.max(windowSum, maxSum)
+//     }
 
-    return maxSum
+//     return maxSum
 
-}
+// }
 
 const nums1 = [2,5,6,9,8,3,2,6,7,8,4,4,7]
 
-console.log(slidingWindow(nums1, 3))
+// console.log(slidingWindow(nums1, 3))
 
+var maxProfit = function(prices) {
+
+    let windowSum = 0
+    let maxProfit = 0
+    let size = 1
+
+
+   
+
+   for(let i = 0; i < prices.length; i++){
+       windowSum += Math.min(prices[i])
+
+       let maxPrice = Math.max(prices[i]) 
+       maxPrice - windowSum == maxProfit
+       
+     }
+
+
+  return maxProfit
+
+    
+};
+
+console.log(maxProfit(nums1))
